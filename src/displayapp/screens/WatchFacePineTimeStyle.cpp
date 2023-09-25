@@ -1,4 +1,4 @@
-/*
+
  * This file is part of the Infinitime distribution (https://github.com/InfiniTimeOrg/Infinitime).
  * Copyright (c) 2021 Kieran Cawthray.
  *
@@ -546,7 +546,7 @@ void WatchFacePineTimeStyle::Refresh() {
       if (settingsController.GetPTSWeather() == Controllers::Settings::PTSWeather::OnC){
         lv_label_set_text_fmt(temperature, "%d°", nowTemp.Get());
       } else {
-        lv_label_set_text_fmt(temperature, "%d°", int ((double (nowTemp.Get()) * (9.0/5.0)) + 32.0 ) );
+        lv_label_set_text_fmt(temperature, "%d°", ((nowTemp.Get() * 9) / 5 ) + 32  );
       }
       
       if ((clouds <= 30) && (precip == 0)) {
