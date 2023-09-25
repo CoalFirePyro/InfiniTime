@@ -1,4 +1,4 @@
-
+/*
  * This file is part of the Infinitime distribution (https://github.com/InfiniTimeOrg/Infinitime).
  * Copyright (c) 2021 Kieran Cawthray.
  *
