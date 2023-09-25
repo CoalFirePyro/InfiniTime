@@ -712,7 +712,7 @@ void WatchFacePineTimeStyle::UpdateSelected(lv_obj_t* object, lv_event_t event) 
     }
     if (object == btnWeather) {
       if (lv_obj_get_hidden(weatherIcon)) {
-        // show weather icon and temperature
+        // show weather icon and temperature in Celsius
         lv_obj_set_hidden(weatherIcon, false);
         lv_obj_set_hidden(temperature, false);
         lv_obj_align(calendarOuter, sidebar, LV_ALIGN_CENTER, 0, 20);
@@ -724,7 +724,10 @@ void WatchFacePineTimeStyle::UpdateSelected(lv_obj_t* object, lv_event_t event) 
         lv_obj_realign(dateDayOfWeek);
         lv_obj_realign(dateDay);
         lv_obj_realign(dateMonth);
-        settingsController.SetPTSWeather(Controllers::Settings::PTSWeather::On);
+        settingsController.SetPTSWeather(Controllers::Settings::PTSWeather::OnC);
+      } else if(settingsController.GetPTSWeather == Controllers::Settings::PTSWeather::OnC) {
+        // toggle to Fahrenheit
+        settingsController.SetPTSWeather(Controllers::Settings::PTSWeather::OnF);
       } else {
         // hide weather
         lv_obj_set_hidden(weatherIcon, true);
