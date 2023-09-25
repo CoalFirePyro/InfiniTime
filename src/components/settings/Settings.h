@@ -34,7 +34,7 @@ namespace Pinetime {
         Pink
       };
       enum class PTSGaugeStyle : uint8_t { Full, Half, Numeric };
-      enum class PTSWeather : uint8_t { On, Off };
+      enum class PTSWeather : uint8_t { OnC, OnF, Off };
 
       struct PineTimeStyle {
         Colors ColorTime = Colors::Teal;
