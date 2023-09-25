@@ -543,7 +543,12 @@ void WatchFacePineTimeStyle::Refresh() {
     clouds = (weatherService.GetCurrentClouds()->amount);
     precip = (weatherService.GetCurrentPrecipitation()->amount);
     if (nowTemp.IsUpdated()) {
-      lv_label_set_text_fmt(temperature, "%d°", nowTemp.Get());
+      if (settingsController.GetPTSWeather() == Controllers::Settings::PTSWeather::OnC){
+        lv_label_set_text_fmt(temperature, "%d°", nowTemp.Get());
+      } else {
+        lv_label_set_text_fmt(temperature, "%d°", int ((double (nowTemp.Get()) * (9.0/5.0)) + 32.0 ) );
+      }
+      
       if ((clouds <= 30) && (precip == 0)) {
         lv_label_set_text(weatherIcon, Symbols::sun);
       } else if ((clouds >= 70) && (clouds <= 90) && (precip == 1)) {
@@ -554,7 +559,8 @@ void WatchFacePineTimeStyle::Refresh() {
         lv_label_set_text(weatherIcon, Symbols::cloudShowersHeavy);
       } else {
         lv_label_set_text(weatherIcon, Symbols::cloudSun);
-      };
+      }
+      
       lv_obj_realign(temperature);
       lv_obj_realign(weatherIcon);
     }
